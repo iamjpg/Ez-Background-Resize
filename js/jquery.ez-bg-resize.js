@@ -9,6 +9,7 @@
 	$.fn.ezBgResize = function(options) {
 		// First position object
 		this.css("position","fixed");
+		this.css("visibility","hidden");
 		this.css("top","0px");
 		this.css("left","0px");
 		this.css("z-index","-1");
@@ -44,6 +45,9 @@
 			this.children('img').css("height",getWindowHeight());
 			this.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
 		}
+		
+		this.css("visibility","visible");
+		
 	};
 	
 	// private function for debugging
