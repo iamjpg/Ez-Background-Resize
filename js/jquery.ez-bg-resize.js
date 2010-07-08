@@ -12,12 +12,6 @@ var containerObj;
 	$.fn.ezBgResize = function(options) {
 		// First position object
 		containerObj = this;
-		containerObj.css("position","fixed");
-		containerObj.css("visibility","hidden");
-		containerObj.css("top","0px");
-		containerObj.css("left","0px");
-		containerObj.css("z-index","-1");
-		containerObj.css("overflow","hidden");
 		
 		// Set obj to the width and height of window
 		containerObj.css("width",getWindowWidth() + "px");
@@ -34,6 +28,13 @@ var containerObj;
 	};
 	
 	function resizeImage() {
+		containerObj.css("position","fixed");
+		containerObj.css("visibility","hidden");
+		containerObj.css("top","0px");
+		containerObj.css("left","0px");
+		containerObj.css("z-index","-1");
+		containerObj.css("overflow","hidden");
+		
 		// Resize the img object to the proper ratio of the window.
 		var iw = containerObj.children('img').width();
 		var ih = containerObj.children('img').height();
