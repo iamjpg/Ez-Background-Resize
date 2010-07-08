@@ -1,7 +1,3 @@
-$(window).load(function() {
-	$("#body-background").ezBgResize();
-});
-
-$(window).resize(function() {
+$(document).ready(function() {
 	$("#body-background").ezBgResize();
 });

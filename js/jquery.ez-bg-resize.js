@@ -4,51 +4,64 @@
 	* Developed by J.P. Given (http://johnpatrickgiven.com)
 	* Useage: anyone so long as credit is left alone
 ******************************************************/
+
+var containerObj;
+
 (function($) {
 	// plugin definition
 	$.fn.ezBgResize = function(options) {
 		// First position object
-		this.css("position","fixed");
-		this.css("visibility","hidden");
-		this.css("top","0px");
-		this.css("left","0px");
-		this.css("z-index","-1");
-		this.css("overflow","hidden");
+		containerObj = this;
+		containerObj.css("position","fixed");
+		containerObj.css("visibility","hidden");
+		containerObj.css("top","0px");
+		containerObj.css("left","0px");
+		containerObj.css("z-index","-1");
+		containerObj.css("overflow","hidden");
 		
 		// Set obj to the width and height of window
-		this.css("width",getWindowWidth() + "px");
-		this.css("height",getWindowHeight() + "px");
+		containerObj.css("width",getWindowWidth() + "px");
+		containerObj.css("height",getWindowHeight() + "px");
 		
+		containerObj.children('img').load(function() {
+			resizeImage();
+		});
+		
+		$(window).bind("resize",function() {
+			resizeImage();
+		});
+		
+	};
+	
+	function resizeImage() {
 		// Resize the img object to the proper ratio of the window.
-		var iw = this.children('img').width();
-		var ih = this.children('img').height();
+		var iw = containerObj.children('img').width();
+		var ih = containerObj.children('img').height();
 		if (getWindowWidth() > getWindowHeight()) {
 			if (iw > ih) {
 				var fRatio = iw/ih;
-				this.children('img').css("width",getWindowWidth() + "px");
-				this.children('img').css("height",Math.round(getWindowWidth() * (1/fRatio)));
-				
+				containerObj.children('img').css("width",getWindowWidth() + "px");
+				containerObj.children('img').css("height",Math.round(getWindowWidth() * (1/fRatio)));
+
 				var newIh = Math.round(getWindowWidth() * (1/fRatio));
-				
+
 				if(newIh < getWindowHeight()) {
 					var fRatio = ih/iw;
-					this.children('img').css("height",getWindowHeight());
-					this.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
+					containerObj.children('img').css("height",getWindowHeight());
+					containerObj.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
 				}
 			} else {
 				var fRatio = ih/iw;
-				this.children('img').css("height",getWindowHeight());
-				this.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
+				containerObj.children('img').css("height",getWindowHeight());
+				containerObj.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
 			}
 		} else {
 			var fRatio = ih/iw;
-			this.children('img').css("height",getWindowHeight());
-			this.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
+			containerObj.children('img').css("height",getWindowHeight());
+			containerObj.children('img').css("width",Math.round(getWindowHeight() * (1/fRatio)));
 		}
-		
-		this.css("visibility","visible");
-		
-	};
+		containerObj.css("visibility","visible");
+	}
 	
 	// private function for debugging
 	function debug($obj) {
