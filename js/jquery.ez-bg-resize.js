@@ -13,9 +13,7 @@ var containerObj;
 		// First position object
 		containerObj = this;
 		
-		// Set obj to the width and height of window
-		containerObj.css("width",getWindowWidth() + "px");
-		containerObj.css("height",getWindowHeight() + "px");
+		
 		
 		containerObj.children('img').load(function() {
 			resizeImage();
@@ -34,6 +32,10 @@ var containerObj;
 		containerObj.css("left","0px");
 		containerObj.css("z-index","-1");
 		containerObj.css("overflow","hidden");
+		
+		// Set obj to the width and height of window
+		containerObj.css("width",getWindowWidth() + "px");
+		containerObj.css("height",getWindowHeight() + "px");
 		
 		// Resize the img object to the proper ratio of the window.
 		var iw = containerObj.children('img').width();
