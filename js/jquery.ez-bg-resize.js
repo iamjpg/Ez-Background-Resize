@@ -26,16 +26,16 @@ var containerObj;
 	};
 	
 	function resizeImage() {
-		containerObj.css("position","fixed");
 		
-		containerObj.css("top","0px");
-		containerObj.css("left","0px");
-		containerObj.css("z-index","-1");
-		containerObj.css("overflow","hidden");
-		
-		// Set obj to the width and height of window
-		containerObj.css("width",getWindowWidth() + "px");
-		containerObj.css("height",getWindowHeight() + "px");
+		containerObj.css({
+			"position":"fixed",
+			"top":"0px",
+			"left":"0px",
+			"z-index":"-1",
+			"overflow":"hidden",
+			"width":getWindowWidth() + "px",
+			"height":getWindowHeight() + "px"
+		});
 		
 		// Resize the img object to the proper ratio of the window.
 		var iw = containerObj.children('img').width();
