@@ -13,7 +13,7 @@ var containerObj;
 		// First position object
 		containerObj = this;
 		
-		
+		containerObj.css("visibility","hidden");
 		
 		containerObj.children('img').load(function() {
 			resizeImage();
@@ -27,7 +27,7 @@ var containerObj;
 	
 	function resizeImage() {
 		containerObj.css("position","fixed");
-		containerObj.css("visibility","hidden");
+		
 		containerObj.css("top","0px");
 		containerObj.css("left","0px");
 		containerObj.css("z-index","-1");
