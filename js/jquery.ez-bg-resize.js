@@ -15,7 +15,7 @@ var containerObj;
 		
 		containerObj.css("visibility","hidden");
 		
-		containerObj.children('img').load(function() {
+		$(window).load(function() {
 			resizeImage();
 		});
 		
