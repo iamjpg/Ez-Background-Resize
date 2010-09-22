@@ -48,8 +48,8 @@ var center = 0;
 			"left":"0px",
 			"z-index":"-1",
 			"overflow":"hidden",
-			"width":$(window).width() + "px",
-			"height":$(window).height() + "px"
+			"width":getWindowWidth() + "px",
+			"height":getWindowHeight() + "px"
 		});
 		
 		// Resize the img object to the proper ratio of the window.
@@ -93,3 +93,41 @@ var center = 0;
 		}
 	}
 })(jQuery);
+
+// Dependable function to get Window Height
+function getWindowHeight() {
+	var windowHeight = 0;
+	if (typeof(window.innerHeight) == 'number') {
+		windowHeight = window.innerHeight;
+	}
+	else {
+		if (document.documentElement && document.documentElement.clientHeight) {
+			windowHeight = document.documentElement.clientHeight;
+		}
+		else {
+			if (document.body && document.body.clientHeight) {
+				windowHeight = document.body.clientHeight;
+			}
+		}
+	}
+	return windowHeight;
+};
+
+// Dependable function to get Window Width
+function getWindowWidth() {
+	var windowWidth = 0;
+	if (typeof(window.innerWidth) == 'number') {
+		windowWidth = window.innerWidth;
+	}
+	else {
+		if (document.documentElement && document.documentElement.clientWidth) {
+			windowWidth = document.documentElement.clientWidth;
+		}
+		else {
+			if (document.body && document.body.clientWidth) {
+				windowWidth = document.body.clientWidth;
+			}
+		}
+	}
+	return windowWidth;
+};
