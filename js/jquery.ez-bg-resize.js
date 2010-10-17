@@ -12,7 +12,7 @@
     // plugin definition
     $.fn.ezBgResize = function(center) {
         center = center || false;
-        console.log(center);
+        //console.log(center);
         // First position object
         containerObj = this;
 
@@ -52,7 +52,7 @@
         var ih = containerObj.children('img').height();
         
         if ($(window).width() > $(window).height()) {
-            console.log(iw, ih);
+            //console.log(iw, ih);
             if (iw > ih) {
                 var fRatio = iw/ih;
                 containerObj.children('img').css("width",$(window).width() + "px");
