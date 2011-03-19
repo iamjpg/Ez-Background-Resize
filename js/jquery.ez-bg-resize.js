@@ -10,9 +10,8 @@
     var containerObj = false;
 
     // plugin definition
-    $.fn.ezBgResize = function(center) {
-        center = center || false;
-        //console.log(center);
+    $.fn.ezBgResize = function() {
+	
         // First position object
         containerObj = this;
 
