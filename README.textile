@@ -19,3 +19,12 @@ Third, simply call the plugin with an absolute path or relative path to your ima
 	@img     : "image/bg.jpg"@
 @});@
 
+h2.  Optional Settings
+
+Right now, other than the required img argument, you can additionally pass in an opacity setting like so:
+
+@$.ezBgResize({@
+	@img     : "image/bg.jpg",@
+	@opacity : .75@
+@});@
+
