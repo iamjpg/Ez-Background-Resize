@@ -19,10 +19,10 @@
         containerObj.css("visibility","hidden");
 
         $("body").css({
-            "overflow-x":"hidden"
+            "overflow":"hidden"
         });
 
-        $(window).load(function() {
+        $(window).bind("load", function() {
             resizeImage();
         });
 
@@ -33,18 +33,14 @@
     };
 
     function resizeImage() {
-        $("body").css({
-            "overflow-x":"auto"
-        });
-
         containerObj.css({
             "position":"fixed",
             "top":"0px",
             "left":"0px",
             "z-index":"-1",
             "overflow":"hidden",
-            "width":getWindowWidth() + "px",
-            "height":getWindowHeight() + "px"
+            "width":$(window).width() + "px",
+            "height":$(window).height() + "px"
         });
 
         // Resize the img object to the proper ratio of the window.
@@ -78,52 +74,8 @@
 
         containerObj.css("visibility","visible");
 
-        // Center BG Image
-        if (center) {
-            containerObj.children('img').css("position","relative");
-
-            if (containerObj.children('img').width() > containerObj.width()) {
-                var wDiff = (containerObj.children('img').width() - containerObj.width()) / 2;
-                containerObj.children('img').css("left", "-" + wDiff + "px");
-            }
-        }
+        $("body").css({
+            "overflow":"auto"
+        });
     }
-
-    // Dependable function to get Window Height
-    function getWindowHeight() {
-        var windowHeight = 0;
-        if (typeof(window.innerHeight) == 'number') {
-            windowHeight = window.innerHeight;
-        }
-        else {
-            if (document.documentElement && document.documentElement.clientHeight) {
-                windowHeight = document.documentElement.clientHeight;
-            }
-            else {
-                if (document.body && document.body.clientHeight) {
-                    windowHeight = document.body.clientHeight;
-                }
-            }
-        }
-        return windowHeight;
-    };
-
-    // Dependable function to get Window Width
-    function getWindowWidth() {
-        var windowWidth = 0;
-        if (typeof(window.innerWidth) == 'number') {
-            windowWidth = window.innerWidth;
-        }
-        else {
-            if (document.documentElement && document.documentElement.clientWidth) {
-                windowWidth = document.documentElement.clientWidth;
-            }
-            else {
-                if (document.body && document.body.clientWidth) {
-                    windowWidth = document.body.clientWidth;
-                }
-            }
-        }
-        return windowWidth;
-    };
 })(jQuery);
