@@ -7,7 +7,7 @@
 ******************************************************/
 
 (function($) {
-    var containerObj, center = false;
+    var containerObj = false;
 
     // plugin definition
     $.fn.ezBgResize = function(center) {
