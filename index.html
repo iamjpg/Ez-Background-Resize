@@ -10,7 +10,15 @@
 	<script src="http://www.google.com/jsapi"></script>
 	<script>google.load("jquery", "1");</script>
 	<script src="js/jquery.ez-bg-resize.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			$.ezBgResize({
+				img     : "image/bg.jpg",
+				opacity : 0.50,
+				border_color : "#333333"
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="container">
@@ -31,7 +39,6 @@
 		<p class="left">Hope you like it!</p>
 	</div>
 	
-	<div id="body-background"><img src="image/bg.jpg" alt="Bg"></div>
 	<div id="credit">
 		Background image courtesy of: <a href="http://www.socwall.com/browse/index.php?search=Bear+Country">socwall.com</a>
 	</div>

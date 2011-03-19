@@ -2,20 +2,27 @@
     * jQuery plug-in
     * Easy Background Image Resizer
     * Developed by J.P. Given (http://johnpatrickgiven.com)
-    * Some modifcations by Hay Kranen < http://www.haykranen.nl >
     * Useage: anyone so long as credit is left alone
 ******************************************************/
 
 (function($) {
-    var containerObj = false;
+	// Global Var
+    var jqez = null;
 
-    // plugin definition
-    $.fn.ezBgResize = function() {
-	
-        // First position object
-        containerObj = this;
-
-        containerObj.css("visibility","hidden");
+    // Define the plugin
+    $.ezBgResize = function(obj) {
+		
+		// Set global to obj passed
+		jqez = obj;
+		
+		// Create a unique div container
+		$("body").append('<div id="jq_ez_bg"></div>');
+		
+		// Add the image to it.
+		$("#jq_ez_bg").html('<img src="' + jqez.img + '" border="0">');
+		
+		// First position object
+        $("#jq_ez_bg").css("visibility","hidden");
 
         $("body").css({
             "overflow":"hidden"
@@ -32,46 +39,47 @@
     };
 
     function resizeImage() {
-        containerObj.css({
+        $("#jq_ez_bg").css({
             "position":"fixed",
             "top":"0px",
             "left":"0px",
             "z-index":"-1",
             "overflow":"hidden",
             "width":$(window).width() + "px",
-            "height":$(window).height() + "px"
+            "height":$(window).height() + "px",
+			"opacity" : jqez.opacity
         });
 
         // Resize the img object to the proper ratio of the window.
-        var iw = containerObj.children('img').width();
-        var ih = containerObj.children('img').height();
+        var iw = $("#jq_ez_bg").children('img').width();
+        var ih = $("#jq_ez_bg").children('img').height();
         
         if ($(window).width() > $(window).height()) {
             //console.log(iw, ih);
             if (iw > ih) {
                 var fRatio = iw/ih;
-                containerObj.children('img').css("width",$(window).width() + "px");
-                containerObj.children('img').css("height",Math.round($(window).width() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("width",$(window).width() + "px");
+                $("#jq_ez_bg").children('img').css("height",Math.round($(window).width() * (1/fRatio)));
 
                 var newIh = Math.round($(window).width() * (1/fRatio));
 
                 if(newIh < $(window).height()) {
                     var fRatio = ih/iw;
-                    containerObj.children('img').css("height",$(window).height());
-                    containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                    $("#jq_ez_bg").children('img').css("height",$(window).height());
+                    $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
                 }
             } else {
                 var fRatio = ih/iw;
-                containerObj.children('img').css("height",$(window).height());
-                containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("height",$(window).height());
+                $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
             }
         } else {
             var fRatio = ih/iw;
-            containerObj.children('img').css("height",$(window).height());
-            containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+            $("#jq_ez_bg").children('img').css("height",$(window).height());
+            $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
         }
 
-        containerObj.css("visibility","visible");
+        $("#jq_ez_bg").css("visibility","visible");
 
         $("body").css({
             "overflow":"auto"
