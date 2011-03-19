@@ -2,128 +2,97 @@
     * jQuery plug-in
     * Easy Background Image Resizer
     * Developed by J.P. Given (http://johnpatrickgiven.com)
-    * Some modifcations by Hay Kranen < http://www.haykranen.nl >
     * Useage: anyone so long as credit is left alone
 ******************************************************/
 
 (function($) {
-    var containerObj, center = false;
+	// Global Var
+    var jqez = null;
 
-    // plugin definition
-    $.fn.ezBgResize = function(center) {
-        center = center || false;
-        //console.log(center);
-        // First position object
-        containerObj = this;
-
-        containerObj.css("visibility","hidden");
-
+    // Define the plugin
+    $.ezBgResize = function(obj) {
+	
+	console.log(obj.timer);
+		
+		// Set global to obj passed
+		jqez = obj;
+		
+		// Create a unique div container
+		$("body").append('<div id="jq_ez_bg"></div>');
+		
+		// Add the image to it.
+		$("#jq_ez_bg").html('<img src="' + jqez.img + '" border="0">');
+		
+		// First position object
+        $("#jq_ez_bg").css("visibility","hidden");
+		
+		// Overflow set to hidden so scroll bars don't mess up image size.
         $("body").css({
-            "overflow-x":"hidden"
+            "overflow":"hidden"
         });
-
-        $(window).load(function() {
+		
+		// On window load, resize image.
+        $(window).bind("load", function() {
             resizeImage();
         });
-
+		
+		// On window resize, resize image.
         $(window).bind("resize",function() {
             resizeImage();
         });
 
     };
-
+	
+	// Actual resize function
     function resizeImage() {
-        $("body").css({
-            "overflow-x":"auto"
+		
+		// Allow scrolling again
+		$("body").css({
+            "overflow":"auto"
         });
-
-        containerObj.css({
+	
+        $("#jq_ez_bg").css({
             "position":"fixed",
             "top":"0px",
             "left":"0px",
             "z-index":"-1",
             "overflow":"hidden",
-            "width":getWindowWidth() + "px",
-            "height":getWindowHeight() + "px"
+            "width":$(window).width() + "px",
+            "height":$(window).height() + "px",
+			"opacity" : jqez.opacity
         });
 
         // Resize the img object to the proper ratio of the window.
-        var iw = containerObj.children('img').width();
-        var ih = containerObj.children('img').height();
+        var iw = $("#jq_ez_bg").children('img').width();
+        var ih = $("#jq_ez_bg").children('img').height();
         
         if ($(window).width() > $(window).height()) {
             //console.log(iw, ih);
             if (iw > ih) {
                 var fRatio = iw/ih;
-                containerObj.children('img').css("width",$(window).width() + "px");
-                containerObj.children('img').css("height",Math.round($(window).width() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("width",$(window).width() + "px");
+                $("#jq_ez_bg").children('img').css("height",Math.round($(window).width() * (1/fRatio)));
 
                 var newIh = Math.round($(window).width() * (1/fRatio));
 
                 if(newIh < $(window).height()) {
                     var fRatio = ih/iw;
-                    containerObj.children('img').css("height",$(window).height());
-                    containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                    $("#jq_ez_bg").children('img').css("height",$(window).height());
+                    $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
                 }
             } else {
                 var fRatio = ih/iw;
-                containerObj.children('img').css("height",$(window).height());
-                containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("height",$(window).height());
+                $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
             }
         } else {
             var fRatio = ih/iw;
-            containerObj.children('img').css("height",$(window).height());
-            containerObj.children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+            $("#jq_ez_bg").children('img').css("height",$(window).height());
+            $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
         }
 
-        containerObj.css("visibility","visible");
-
-        // Center BG Image
-        if (center) {
-            containerObj.children('img').css("position","relative");
-
-            if (containerObj.children('img').width() > containerObj.width()) {
-                var wDiff = (containerObj.children('img').width() - containerObj.width()) / 2;
-                containerObj.children('img').css("left", "-" + wDiff + "px");
-            }
-        }
+        $("#jq_ez_bg").css("visibility","visible");
+		
+        
     }
-
-    // Dependable function to get Window Height
-    function getWindowHeight() {
-        var windowHeight = 0;
-        if (typeof(window.innerHeight) == 'number') {
-            windowHeight = window.innerHeight;
-        }
-        else {
-            if (document.documentElement && document.documentElement.clientHeight) {
-                windowHeight = document.documentElement.clientHeight;
-            }
-            else {
-                if (document.body && document.body.clientHeight) {
-                    windowHeight = document.body.clientHeight;
-                }
-            }
-        }
-        return windowHeight;
-    };
-
-    // Dependable function to get Window Width
-    function getWindowWidth() {
-        var windowWidth = 0;
-        if (typeof(window.innerWidth) == 'number') {
-            windowWidth = window.innerWidth;
-        }
-        else {
-            if (document.documentElement && document.documentElement.clientWidth) {
-                windowWidth = document.documentElement.clientWidth;
-            }
-            else {
-                if (document.body && document.body.clientWidth) {
-                    windowWidth = document.body.clientWidth;
-                }
-            }
-        }
-        return windowWidth;
-    };
 })(jQuery);

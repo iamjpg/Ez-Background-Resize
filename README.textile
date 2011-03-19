@@ -1,0 +1,30 @@
+h1. Overview
+
+The jQuery Easy Background Resize plugin is intended to easily allow a background image to dynamically resize itself to the size of the browser keeping the images aspect ratio in tact.
+
+h2. Installation Instructions
+
+First, make sure you have jQuery loaded within the @<head>@ tag of your page.
+	
+@<script src="http://www.google.com/jsapi"></script>@
+@<script>google.load("jquery", "1");</script>@
+
+Second, put the jQuery EZ Background Resize script in your @<head>@ tag.
+	
+@<script src="javascripts/jquery.ez-bg-resize.js"></script>@
+
+Third, simply call the plugin with an absolute path or relative path to your image:
+
+@$.ezBgResize({@
+	@img     : "image/bg.jpg"@
+@});@
+
+h2.  Optional Settings
+
+Right now, other than the required img argument, you can additionally pass in an opacity setting like so:
+
+@$.ezBgResize({@
+	@img     : "image/bg.jpg",@
+	@opacity : .75@
+@});@
+

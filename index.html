@@ -10,28 +10,30 @@
 	<script src="http://www.google.com/jsapi"></script>
 	<script>google.load("jquery", "1");</script>
 	<script src="js/jquery.ez-bg-resize.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			$.ezBgResize({
+				img     : "image/bg.jpg", // Relative path example.  You could also use an absolute url (http://...).
+				opacity : 1 // Opacity! 1 = 100%.  This is optional.
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="container">
 		<h1>jQuery Easy Background Resize</h1>
 		<p>Resizable full-browser background image using jQuery.  Implementation requires no CSS.  Keeps the images aspect ratio in tact!</p>
-		<p class="title">Example HTML for Background DIV</p>
-		<p class="code">
-			<span class="grey">&lt;!-- This gets positioned absolutely so place it anywhere. --&gt;</span><br />
-			&lt;div id="body-background"&gt;&lt;img src="image/bg.jpg" alt="Bg"&gt;&lt;/div&gt;
-		</p>
 		<p class="title">Example Example jQuery Code</p>
 		<p class="code">
-			$(document).ready(function() {<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;$("#body-background").ezBgResize();<br />
+			$.ezBgResize({<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;img : "image/bg.jpg",<br />
 			});
 		</p>
-		<p class="left">And that's it!  Well, other than including the proper jQuery and Easy Background Resize javascript files.</p>
+		<p class="left">That's it!  Super simple!!!</p>
+		<p class="left">Don't forget to include jQuery and the source plugin script!</p>
 		<p class="left">Hope you like it!</p>
 	</div>
 	
-	<div id="body-background"><img src="image/bg.jpg" alt="Bg"></div>
 	<div id="credit">
 		Background image courtesy of: <a href="http://www.socwall.com/browse/index.php?search=Bear+Country">socwall.com</a>
 	</div>
