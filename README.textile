@@ -13,13 +13,9 @@ Second, put the jQuery EZ Background Resize script in your @<head>@ tag.
 	
 @<script src="javascripts/jquery.ez-bg-resize.js"></script>@
 
-Third, simply put the image you want as your background image within a DIV tag anywhere in your page (preferably at the top under the @<body>@ tag or ad the bottom before the @</body>@ tag).  Be sure to name give your @<div>@ tag an id attribute:
-	
-@<div id="the_background"><img src="images/some-image-somewhere.jpg"></div>@
+Third, simply call the plugin with an absolute path or relative path to your image:
 
-And lastly, in your @<head>@ tag, after the script call above add:
-	
-@<script>$(document).ready(function() { $("#the_background").ezBgResize(); });</script>@
-
-And that's it.  You should have a background image that resides under your other content and resizes itself as the browser resizes.
+@$.ezBgResize({@
+	@img     : "image/bg.jpg"@
+@});@
 
