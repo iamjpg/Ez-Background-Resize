@@ -11,6 +11,8 @@
 
     // Define the plugin
     $.ezBgResize = function(obj) {
+	
+	console.log(obj.timer);
 		
 		// Set global to obj passed
 		jqez = obj;
@@ -23,22 +25,32 @@
 		
 		// First position object
         $("#jq_ez_bg").css("visibility","hidden");
-
+		
+		// Overflow set to hidden so scroll bars don't mess up image size.
         $("body").css({
             "overflow":"hidden"
         });
-
+		
+		// On window load, resize image.
         $(window).bind("load", function() {
             resizeImage();
         });
-
+		
+		// On window resize, resize image.
         $(window).bind("resize",function() {
             resizeImage();
         });
 
     };
-
+	
+	// Actual resize function
     function resizeImage() {
+		
+		// Allow scrolling again
+		$("body").css({
+            "overflow":"auto"
+        });
+	
         $("#jq_ez_bg").css({
             "position":"fixed",
             "top":"0px",
@@ -80,9 +92,7 @@
         }
 
         $("#jq_ez_bg").css("visibility","visible");
-
-        $("body").css({
-            "overflow":"auto"
-        });
+		
+        
     }
 })(jQuery);
