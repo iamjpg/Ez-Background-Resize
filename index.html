@@ -14,6 +14,8 @@
 		$(document).ready(function() {
 			$.ezBgResize({
 				img     : "image/bg.jpg", // Relative path example.  You could also use an absolute url (http://...).
+				width   : 1024,
+				height  : 768,
 				opacity : 1 // Opacity! 1 = 100%.  This is optional.
 			});
 		});
@@ -26,7 +28,9 @@
 		<p class="title">Example Example jQuery Code</p>
 		<p class="code">
 			$.ezBgResize({<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;img : "image/bg.jpg",<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;img    : "image/bg.jpg",<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;width  : 1024, // Image default width<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;height : 768 // Image default height<br />
 			});
 		</p>
 		<p class="left">That's it!  Super simple!!!</p>

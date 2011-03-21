@@ -14,9 +14,12 @@ Second, put the jQuery EZ Background Resize script in your @<head>@ tag.
 @<script src="javascripts/jquery.ez-bg-resize.js"></script>@
 
 Third, simply call the plugin with an absolute path or relative path to your image:
+_Note that width and height are required.  Won't work in IE without it._
 
 @$.ezBgResize({@
 	@img     : "image/bg.jpg"@
+	@width   : 1024,@
+	@height  : 768@
 @});@
 
 h2.  Optional Settings
@@ -25,6 +28,8 @@ Right now, other than the required img argument, you can additionally pass in an
 
 @$.ezBgResize({@
 	@img     : "image/bg.jpg",@
+	@width   : 1024,@
+	@height  : 768,@
 	@opacity : .75@
 @});@
 

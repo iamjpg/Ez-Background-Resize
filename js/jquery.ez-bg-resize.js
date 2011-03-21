@@ -18,8 +18,13 @@
 		// Create a unique div container
 		$("body").append('<div id="jq_ez_bg"></div>');
 		
+		// Check for required options
+		if ((jqez.width == undefined) || (jqez.height == undefined)) {
+			alert('You must pass a width and height for the jQuery Easy Background Resizer to work.');
+		}
+		
 		// Add the image to it.
-		$("#jq_ez_bg").html('<img src="' + jqez.img + '" border="0">');
+		$("#jq_ez_bg").html('<img src="' + jqez.img + '" width="' + jqez.width + '" height="' + jqez.height + '" border="0">');
 		
 		// First position object
         $("#jq_ez_bg").css("visibility","hidden");
