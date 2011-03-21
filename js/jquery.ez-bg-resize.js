@@ -11,8 +11,6 @@
 
     // Define the plugin
     $.ezBgResize = function(obj) {
-	
-	//console.log(obj.timer);
 		
 		// Set global to obj passed
 		jqez = obj;
