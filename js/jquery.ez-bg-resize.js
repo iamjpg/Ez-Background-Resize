@@ -104,8 +104,6 @@
 			}
 		}
 
-		console.log(this_height);
-
         $("#jq_ez_bg").css({
 			"visibility" : "visible"
 		});

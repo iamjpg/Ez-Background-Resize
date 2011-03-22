@@ -24,7 +24,7 @@ _Note that width and height are required.  Won't work in IE without it._
 
 h2.  Optional Settings
 
-Right now, other than the required img argument, you can additionally pass in an opacity setting like so:
+Optional arguments are center & opacity.
 
 @$.ezBgResize({@
 	@img     : "image/bg.jpg",@
