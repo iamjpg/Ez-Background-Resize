@@ -48,11 +48,6 @@
 	
 	// Actual resize function
     function resizeImage() {
-		
-		// Allow scrolling again
-		$("body").css({
-            "overflow":"auto"
-        });
 	
         $("#jq_ez_bg").css({
             "position":"fixed",
@@ -64,6 +59,9 @@
             "height":$(window).height() + "px",
 			"opacity" : jqez.opacity
         });
+		
+		// Image relative to its container
+		$("#jq_ez_bg").children('img').css("position", "relative");
 
         // Resize the img object to the proper ratio of the window.
         var iw = $("#jq_ez_bg").children('img').width();
@@ -93,8 +91,29 @@
             $("#jq_ez_bg").children('img').css("height",$(window).height());
             $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
         }
+		
+		// Center the image
+		if (jqez.center) {
+			if ($("#jq_ez_bg").children('img').width() > $(window).width()) {
+				var this_left = ($("#jq_ez_bg").children('img').width() - $(window).width()) / 2;
+				$("#jq_ez_bg").children('img').css("left", -this_left);
+			}
+			if ($("#jq_ez_bg").children('img').height() > $(window).height()) {
+				var this_height = ($("#jq_ez_bg").children('img').height() - $(window).height()) / 2;
+				$("#jq_ez_bg").children('img').css("top", -this_height);
+			}
+		}
 
-        $("#jq_ez_bg").css("visibility","visible");
+		console.log(this_height);
+
+        $("#jq_ez_bg").css({
+			"visibility" : "visible"
+		});
+
+		// Allow scrolling again
+		$("body").css({
+            "overflow":"auto"
+        });
 		
         
     }
