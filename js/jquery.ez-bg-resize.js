@@ -15,6 +15,7 @@
 		// Set global to obj passed
 		jqez = options;
 		
+		// If img option is string convert to array.
 		if (!$.isArray(jqez.img)) {
 			var tmp_img = jqez.img;
 			jqez.img = [tmp_img]
