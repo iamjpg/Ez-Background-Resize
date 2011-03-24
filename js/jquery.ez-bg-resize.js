@@ -6,14 +6,21 @@
 ******************************************************/
 
 (function($) {
-	// Global Var
+	// Global Namespace
     var jqez = {};
 
     // Define the plugin
-    $.ezBgResize = function(obj) {
+    $.ezBgResize = function(options) {
 		
 		// Set global to obj passed
-		jqez = obj;
+		jqez = options;
+		
+		if (!$.isArray(jqez.img)) {
+			var tmp_img = jqez.img;
+			jqez.img = [tmp_img]
+		}
+		
+		console.log(jqez.img);
 		
 		// Create a unique div container
 		$("body").append('<div id="jq_ez_bg"></div>');
@@ -24,7 +31,7 @@
 		}
 		
 		// Add the image to it.
-		$("#jq_ez_bg").html('<img src="' + jqez.img + '" width="' + jqez.width + '" height="' + jqez.height + '" border="0">');
+		$("#jq_ez_bg").html('<img src="' + jqez.img[0] + '" width="' + jqez.width + '" height="' + jqez.height + '" border="0">');
 		
 		// First position object
         $("#jq_ez_bg").css("visibility","hidden");
