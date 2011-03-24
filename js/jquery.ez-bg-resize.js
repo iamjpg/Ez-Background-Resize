@@ -7,7 +7,7 @@
 
 (function($) {
 	// Global Var
-    var jqez = null;
+    var jqez = {};
 
     // Define the plugin
     $.ezBgResize = function(obj) {
@@ -93,7 +93,7 @@
         }
 		
 		// Center the image
-		if (jqez.center) {
+		if (typeof(jqez.center) == 'undefined' || jqez.center) {
 			if ($("#jq_ez_bg").children('img').width() > $(window).width()) {
 				var this_left = ($("#jq_ez_bg").children('img').width() - $(window).width()) / 2;
 				$("#jq_ez_bg").children('img').css({
