@@ -31,6 +31,6 @@ Optional arguments are center & opacity.
 	@width   : 1024,@
 	@height  : 768,@
 	@opacity : .75,@
-	@center : true@
+	@center : false@
 @});@
 
