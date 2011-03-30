@@ -43,6 +43,10 @@
 			resizeImage();
 		});
     };
+
+	$(window).bind("resize", function() {
+		resizeImage();
+	});
 	
 	// Actual resize function
     function resizeImage() {
