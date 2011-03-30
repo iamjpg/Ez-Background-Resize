@@ -16,42 +16,32 @@
 		jqez = options;
 		
 		// If img option is string convert to array.
+		// This is in preparation for accepting an slideshow of images.
 		if (!$.isArray(jqez.img)) {
 			var tmp_img = jqez.img;
 			jqez.img = [tmp_img]
 		}
 		
-		console.log(jqez.img);
-		
-		// Create a unique div container
-		$("body").append('<div id="jq_ez_bg"></div>');
-		
-		// Check for required options
-		if ((jqez.width == undefined) || (jqez.height == undefined)) {
-			alert('You must pass a width and height for the jQuery Easy Background Resizer to work.');
-		}
-		
-		// Add the image to it.
-		$("#jq_ez_bg").html('<img src="' + jqez.img[0] + '" width="' + jqez.width + '" height="' + jqez.height + '" border="0">');
-		
-		// First position object
-        $("#jq_ez_bg").css("visibility","hidden");
-		
-		// Overflow set to hidden so scroll bars don't mess up image size.
-        $("body").css({
-            "overflow":"hidden"
-        });
-		
-		// On window load, resize image.
-        $(window).bind("load", function() {
-            resizeImage();
-        });
-		
-		// On window resize, resize image.
-        $(window).bind("resize",function() {
-            resizeImage();
-        });
+		$("<img/>").attr("src", jqez.img).load(function() {
+			jqez.width = this.width;
+			jqez.height = this.height;
+			
+			// Create a unique div container
+			$("body").append('<div id="jq_ez_bg"></div>');
 
+			// Add the image to it.
+			$("#jq_ez_bg").html('<img src="' + jqez.img[0] + '" width="' + jqez.width + '" height="' + jqez.height + '" border="0">');
+
+			// First position object
+	        $("#jq_ez_bg").css("visibility","hidden");
+
+			// Overflow set to hidden so scroll bars don't mess up image size.
+	        $("body").css({
+	            "overflow":"hidden"
+	        });
+
+			resizeImage();
+		});
     };
 	
 	// Actual resize function
