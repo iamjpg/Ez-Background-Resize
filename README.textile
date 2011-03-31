@@ -18,8 +18,6 @@ _Note that width and height are required.  Won't work in IE without it._
 
 @$.ezBgResize({@
 	@img     : "image/bg.jpg"@
-	@width   : 1024,@
-	@height  : 768@
 @});@
 
 h2.  Optional Settings
@@ -28,8 +26,6 @@ Optional arguments are center & opacity.
 
 @$.ezBgResize({@
 	@img     : "image/bg.jpg",@
-	@width   : 1024,@
-	@height  : 768,@
 	@opacity : .75,@
 	@center : false@
 @});@
