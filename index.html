@@ -1,79 +1,90 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
 <head>
-  <meta charset='utf-8'>
-
-  <title>iamjpg/jQuery-Ez-Background-Resize @ GitHub</title>
-
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #000000; }
-    h3 { text-align: center; color: #000000; }
-    a { color: #000000; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>jQuery Easy Background Resize Plug-In</title>
+	<link rel="stylesheet" href="css/lib.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/jquery.snippet.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<!-- Google Hosted jQuery Core -->
+	<script src="http://www.google.com/jsapi"></script>
+	<script>google.load("jquery", "1");</script>
+	<script src="js/jquery.ez-bg-resize.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.snippet.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			$("body").ezBgResize({
+				img     : "image/bg.jpg", // Relative path example.  You could also use an absolute url (http://...).
+				opacity : 1, // Opacity. 1 = 100%.  This is optional.
+				center  : true // Boolean (true or false). This is optional. Default is true.
+			});
+			
+			$("pre.js").snippet("javascript",{ style:"bright", transparent:false, showNum:true });
+			$("pre.html").snippet("html",{ style:"bright", transparent:false, showNum:true });
+			
+		});
+	</script>
 </head>
-
 <body>
-  <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	<div id="wrapper">
+	<h1>jQuery Easy Background Resize</h1><br />
+	<div>By: <a href="http://johnpatrickgiven.com">J.P. Given</a></div>
+	
+	<p>
+		You can download this project in either <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/zipball/master">zip</a> or <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/tarball/master">tar</a> formats.  You can also view the project page on GitHub <a href="https://github.com/iamjpg/jQuery-Ez-Background-Resize">here</a>.
+	</p>
+	
+	<p>
+		<h3>How to use:</h3>
+	</p>
+	
+<pre class="js">
+$(document).ready(function() {
+	$("body").ezBgResize({
+		img : "image/bg.jpg"
+	});
+});
+</pre>
 
-  <div id="container">
+	<p>
+		<h3>Optional Parameters:</h3>
+	</p>
 
-    <div class="download">
-      <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
+<pre class="js">
+$(document).ready(function() {
+	$("body").ezBgResize({
+		img : "image/bg.jpg", // Relative path example.  You could also use an absolute url (http://...).
+		opacity : 1, // Opacity. 1 = 100%.  This is optional.
+		center  : true // Boolean (true or false). This is optional. Default is true.
+	});
+});
+</pre>
 
-    <h1><a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize">jquerybgresize</a>
-      <span class="small">by <a href="http://github.com/iamjpg">iamjpg</a></span></h1>
+	<p>
+		<h3>Don't forget to source the plugin in your &lt;head&gt; tag:</h3>
+	</p>
 
-    <div class="description">
-      Resizable full-browser background image using jQuery. Implementation requires no CSS.
-    </div>
+<pre class="html">
+&lt;head&gt;
+	...
+	
+	&lt;script src="js/jquery.ez-bg-resize.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;
+	
+	...
+&lt;/head&gt;
+</pre>
 
-    <h2>Dependencies</h2>
-<p>jQuery 1.4 +</p>
-<h2>Authors</h2>
-<p>J.P. Given (jgiven@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>J.P. Given (jgiven@gmail.com)<br/>      </p>
+	<p>
+		<h3>Issues?</h3>
+	</p>
+	<p>
+		Please report them to the <a href="https://github.com/iamjpg/jQuery-Ez-Background-Resize/issues">issues section in GitHub</a>.  Thank you for trying out my plugin!
+	</p>
 
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/zipball/master">zip</a> or
-      <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/iamjpg/jQuery-Ez-Background-Resize</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/iamjpg/jQuery-Ez-Background-Resize">iamjpg/jQuery-Ez-Background-Resize</a>
-    </div>
-
-  </div>
-
-  
+</div>
+	<!-- Begin Twitter banner code - http://twtbnr.com -->
+	<div style="overflow:hidden; top: 0px; right: 0px; display: inline-block; position: absolute; z-index: 1000; width: 200px; height: 200px;"><div style="position: relative;top: -76px; right: 18px;"><a href="http://twitter.com/iamjpg"><img border="0" src="http://twtbnr.com/images/bnr_right.png"></a></div></div>
+	<!-- End Twitter banner code - http://twtbnr.com -->
 </body>
 </html>
