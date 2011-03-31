@@ -10,7 +10,7 @@
     var jqez = {};
 
     // Define the plugin
-    $.ezBgResize = function(options) {
+    $.fn.ezBgResize = function(options) {
 		
 		// Set global to obj passed
 		jqez = options;
