@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>jQuery Easy Background Resize Plug-In</title>
+	<link rel="stylesheet" href="css/lib.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<!-- Google Hosted jQuery Core -->
+	<script src="http://www.google.com/jsapi"></script>
+	<script>google.load("jquery", "1");</script>
+	<script src="js/jquery.ez-bg-resize.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(document).ready(function() {
+			
+			var BGImageArray = ["bg.jpg","bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg","bg6.jpg","bg7.jpg","bg8.jpg"];
+			var BGImage = BGImageArray[Math.floor(Math.random()*BGImageArray.length)]
+
+			$("body").ezBgResize({
+				img     : "image/" + BGImage, // Relative path example.  You could also use an absolute url (http://...).
+				opacity : 1, // Opacity. 1 = 100%.  This is optional.
+				center  : true // Boolean (true or false). This is optional. Default is true.
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="container">
+		<h1>jQuery Easy Background Resize</h1>
+		<p>Resizable full-browser background image using jQuery.  Implementation requires no CSS.  Keeps the images aspect ratio in tact!</p>
+		<p class="title">Example Example jQuery Code</p>
+		<p class="code">
+			$.ezBgResize({<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;img      : "image/bg.jpg", // Required.<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;opacity  : 1, // Optional. Default is 100% (1).<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;center   : true // Optional. Default is true.<br />
+			});
+		</p>
+		<p class="left">That's it!  Super simple!!!</p>
+		<p class="left">Don't forget to include jQuery and the source plugin script!</p>
+		<p class="left">Hope you like it!</p>
+	</div>
+	
+	<div id="credit">
+		Background image courtesy of: <a href="http://www.socwall.com/browse/index.php?search=Bear+Country">socwall.com</a>
+	</div>
+</body>
+</html>
