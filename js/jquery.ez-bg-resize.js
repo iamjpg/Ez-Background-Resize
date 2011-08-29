@@ -51,15 +51,15 @@
     	var scrollHeight = getScrollHeight();
     	var realWidth ;
     	var realHeight;
-    	if($(window).width() > $(document).width()){
+    	if($(window).width() < $(document).width()){
     		realWidth = ($(window).width()+scrollWidth);
 	}else{
 		realWidth = ($(window).width());
 	}
-	if($(window).height() > $(document).height()){
-    		realWidth = ($(window).height()+scrollHeight);
+	if($(window).height() < $(document).height()){
+    		realHeight = ($(window).height()+scrollHeight);
 	}else{
-		realWidth = ($(window).valueOf());
+		realHeight = ($(window).height());
 	}
         $("#jq_ez_bg").css({
             "position":"fixed",
