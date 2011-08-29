@@ -36,9 +36,6 @@
 	        $("#jq_ez_bg").css("visibility","hidden");
 
 			// Overflow set to hidden so scroll bars don't mess up image size.
-	        $("body").css({
-	            "overflow":"hidden"
-	        });
 
 			resizeImage();
 		});
@@ -50,15 +47,28 @@
 	
 	// Actual resize function
     function resizeImage() {
-	
+    	var scrollWidth = getScrollWidth();
+    	var scrollHeight = getScrollHeight();
+    	var realWidth ;
+    	var realHeight;
+    	if($(window).width() > $(document).width()){
+    		realWidth = ($(window).width()+scrollWidth);
+	}else{
+		realWidth = ($(window).width());
+	}
+	if($(window).height() > $(document).height()){
+    		realWidth = ($(window).height()+scrollHeight);
+	}else{
+		realWidth = ($(window).valueOf());
+	}
         $("#jq_ez_bg").css({
             "position":"fixed",
             "top":"0px",
             "left":"0px",
             "z-index":"-1",
             "overflow":"hidden",
-            "width":$(window).width() + "px",
-            "height":$(window).height() + "px",
+            "width":+realWidth+"px",
+            "height":(realHeight) + "px",
 			"opacity" : jqez.opacity
         });
 		
@@ -69,42 +79,42 @@
         var iw = $("#jq_ez_bg").children('img').width();
         var ih = $("#jq_ez_bg").children('img').height();
         
-        if ($(window).width() > $(window).height()) {
+        if (realWidth > realHeight) {
             //console.log(iw, ih);
             if (iw > ih) {
                 var fRatio = iw/ih;
-                $("#jq_ez_bg").children('img').css("width",$(window).width() + "px");
-                $("#jq_ez_bg").children('img').css("height",Math.round($(window).width() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("width",realWidth + "px");
+                $("#jq_ez_bg").children('img').css("height",Math.round(realWidth * (1/fRatio)));
 
-                var newIh = Math.round($(window).width() * (1/fRatio));
+                var newIh = Math.round(realWidth * (1/fRatio));
 
-                if(newIh < $(window).height()) {
+                if(newIh < realHeight) {
                     var fRatio = ih/iw;
-                    $("#jq_ez_bg").children('img').css("height",$(window).height());
-                    $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                    $("#jq_ez_bg").children('img').css("height",realHeight);
+                    $("#jq_ez_bg").children('img').css("width",Math.round(realHeight * (1/fRatio)));
                 }
             } else {
                 var fRatio = ih/iw;
-                $("#jq_ez_bg").children('img').css("height",$(window).height());
-                $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+                $("#jq_ez_bg").children('img').css("height",realHeight);
+                $("#jq_ez_bg").children('img').css("width",Math.round(realHeight * (1/fRatio)));
             }
         } else {
             var fRatio = ih/iw;
-            $("#jq_ez_bg").children('img').css("height",$(window).height());
-            $("#jq_ez_bg").children('img').css("width",Math.round($(window).height() * (1/fRatio)));
+            $("#jq_ez_bg").children('img').css("height",realHeight);
+            $("#jq_ez_bg").children('img').css("width",Math.round(realHeight * (1/fRatio)));
         }
 		
 		// Center the image
 		if (typeof(jqez.center) == 'undefined' || jqez.center) {
-			if ($("#jq_ez_bg").children('img').width() > $(window).width()) {
-				var this_left = ($("#jq_ez_bg").children('img').width() - $(window).width()) / 2;
+			if ($("#jq_ez_bg").children('img').width() > realWidth) {
+				var this_left = ($("#jq_ez_bg").children('img').width() - realWidth) / 2;
 				$("#jq_ez_bg").children('img').css({
 					"top"  : 0,
 					"left" : -this_left
 				});
 			}
-			if ($("#jq_ez_bg").children('img').height() > $(window).height()) {
-				var this_height = ($("#jq_ez_bg").children('img').height() - $(window).height()) / 2;
+			if ($("#jq_ez_bg").children('img').height() > realHeight) {
+				var this_height = ($("#jq_ez_bg").children('img').height() - realHeight) / 2;
 				$("#jq_ez_bg").children('img').css({
 					"left" : 0,
 					"top" : -this_height
@@ -115,7 +125,39 @@
         $("#jq_ez_bg").css({
 			"visibility" : "visible"
 		});
-	
+
+		// Allow scrolling again
+		
         
+    }
+   getScrollWidth = function(){
+	    var $child = $('<div></div>').css({
+	    	width:'100px',
+	    	height:'100px',
+	    	overflow:'hidden',
+	    	position:'absolute',
+	    	top:'-200px',
+	    	left:"-200px"}
+	    ).append('<div style="height:100px;"></div>').appendTo($('body'));
+	    var w1 = $('div', $child).innerWidth();
+	    $child.css('overflow-y', 'scroll');
+	    var w2 = $('div', $child).innerWidth();
+	    $child.remove();
+	    return (w1 - w2);
+    }
+    getScrollHeight = function(){
+	    var $child = $('<div></div>').css({
+	    	width:'100px',
+	    	height:'100px',
+	    	overflow:'hidden',
+	    	position:'absolute',
+	    	top:'-200px',
+	    	left:"-200px"}
+	    ).append('<div style="width:100px;"></div>').appendTo($('body'));
+	    var w1 = $('div', $child).innerHeight();
+	    $child.css('overflow-x', 'scroll');
+	    var w2 = $('div', $child).innerHeight();
+	    $child.remove();
+	    return (w1 - w2);
     }
 })(jQuery);
