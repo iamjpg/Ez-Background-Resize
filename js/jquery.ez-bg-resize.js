@@ -115,12 +115,7 @@
         $("#jq_ez_bg").css({
 			"visibility" : "visible"
 		});
-
-		// Allow scrolling again
-		$("body").css({
-            "overflow":"auto"
-        });
-		
+	
         
     }
 })(jQuery);
