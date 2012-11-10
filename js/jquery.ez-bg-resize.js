@@ -22,7 +22,7 @@
 			jqez.img = [tmp_img]
 		}
 		
-		$("<img/>").attr("src", jqez.img).load(function() {
+		$("<img/>").load(function() {
 			jqez.width = this.width;
 			jqez.height = this.height;
 			
@@ -41,7 +41,7 @@
 	        });
 
 			resizeImage();
-		});
+		}).attr("src", jqez.img);
     };
 
 	$(window).bind("resize", function() {
